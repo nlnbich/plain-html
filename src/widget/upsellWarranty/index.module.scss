@@ -1,0 +1,291 @@
+@mixin for-tablet-down {
+  @media (max-width: 1023px) {
+    @content;
+  }
+
+}
+
+
+.module {
+  &__content {
+    padding: 0 15px;
+  }
+
+  &__indicator {
+    argin-top: 0;
+    margin-bottom: 25px;
+    max-width: 620px;
+    margin: 20px auto;
+    display: flex;
+    width: 100%;
+    table-layout: fixed;
+    border: 1px solid #e0e0e0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    &__item {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 5px;
+      width: 33.33%;
+      color: #4a4a4a;
+      background-color: #f4f4f4;
+      font-size: 1.2rem;
+      text-align: center;
+      opacity: .5;
+    }
+
+    :global(.active) {
+      border-left: 1px solid #e0e0e0;
+      border-right: 1px solid #e0e0e0;
+      background-color: #e0e0e0;
+      color: #4a4a4a;
+      opacity: 1;
+    }
+
+    :global(.step-number), :global(.step-text) {
+      font-size: 12px;
+      display: block;
+    }
+  }
+
+
+  &__info {
+    padding: 0 15px;
+
+    :global(h2) {
+      text-align: center;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    :global(p) {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    :global(.quanlifyContent) {
+      color: #000;
+    }
+  }
+
+  &__btnUpsellOrder {
+    margin-bottom: 30px;
+    text-align: center;
+
+    &__button {
+      position: relative;
+      width: 100%;
+      padding: 10px 15px;
+      font-weight: 700;
+      color: #FFF;
+      background-color: #0BB64E;
+      border: 0;
+      border-bottom: 4px solid #037C33;
+      font-size: 15px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    &__info {
+      margin: 0 auto;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    &__des {
+      margin: 0 auto;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+  }
+
+  &__protection {
+    $borderSize: 53px;
+    $borderSize_bg: 53px 82px;
+    $borderSize_bg_inv: 82px 53px;
+    $padding: 63px;
+
+    $borderSize__sm: 20px;
+    $borderSize__sm_bg: 20px 32px;
+    $borderSize__sm_bg_inv: 32px 20px;
+    $padding__sm: 30px;
+
+    &__box {
+      position: relative;
+      background: #fff;
+      margin: 0 auto 30px;
+      padding: $padding;
+      opacity: 0;
+      animation: upsellWarranty__fadeIn 2s ease-in both;
+
+      @include for-tablet-down {
+        padding: $padding__sm;
+        margin-bottom: 40px;
+      }
+    }
+
+    &__body {
+      border: 3px solid #0D4098;
+      padding: 5px;
+      background-color: #fff;
+
+
+      &_1 {
+        border: 2px solid #0D4098;
+        padding: 30px;
+        background-color: #fff;
+
+        @include for-tablet-down {
+          padding: 10px;
+          border: none;
+        }
+      }
+
+      :global(h2) {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: .18px;
+        line-height: 38px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+
+
+    &__signbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__left {
+        width: 55%;
+
+        :global(p) {
+          width: 100%;
+          border-bottom: 1px solid #979797;
+          font-style: italic;
+        }
+
+        @include for-tablet-down {
+          width: 100%;
+        }
+      }
+
+      @include for-tablet-down {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+
+    :global([class*=border]) {
+      background-image: url(https://ctrwow-commonstorage.azureedge.net/public-assets/upsell_mini_border_top.png);
+      position: absolute;
+      background-color: #f1f1f1;
+    }
+
+
+    &__border {
+      &--top, &--bottom {
+        //left: 50%;
+        //transform: translateX(-50%);
+        //background-image: $bgImg;
+        //top: 0;
+        left: $borderSize;
+        right: $borderSize;
+        height: $borderSize;
+        background-size: $borderSize_bg_inv;
+
+        @include for-tablet-down {
+          left: $borderSize__sm;
+          right: $borderSize__sm;
+          height: $borderSize__sm;
+          background-size: $borderSize__sm_bg_inv;
+        }
+      }
+
+      &--top {
+        top: 0;
+      }
+
+      &--bottom {
+        bottom: 0
+      }
+
+      &--left, &--right {
+        top: 0;
+        bottom: 0;
+        width: $borderSize;
+        background-size: $borderSize_bg;
+
+
+        @include for-tablet-down {
+          width: $borderSize__sm;
+          background-size: $borderSize__sm_bg;
+        }
+      }
+
+      &--left {
+        left: 0;
+      }
+
+      &--right {
+        right: 0;
+      }
+    }
+  }
+
+  &__secure {
+    padding: 0 15px;
+    :global(p) {
+      text-align: center;
+      overflow: hidden;
+    }
+
+    :global(img) {
+      max-width: 100%;
+    }
+
+    &__ssl {
+      font-weight: bold;
+      :global(img) {
+        height: 20px;
+        display: inline-block;
+        top: 4px;
+        position: relative;
+      }
+    }
+  }
+
+  &__noThanks {
+    margin: 40px;
+    text-align: center;
+
+    :global(a) {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}
+
+@keyframes upsellWarranty__fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0)
+  }
+}
